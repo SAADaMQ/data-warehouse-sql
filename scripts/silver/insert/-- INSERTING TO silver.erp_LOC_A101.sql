@@ -1,0 +1,23 @@
+
+-- INSERTING TO silver.erp_LOC_A101 WITH SOLVING THE PROBLEMS OF CHEKING 
+
+insert into silver.erp_LOC_A101 (CID ,CNTRY )
+select 
+
+
+replace(cid , '-' , '') as cid,
+
+
+CASE 
+WHEN UPPER(TRIM(CNTRY)) IN ('US', 'USA', 'UNITED STATES') THEN 'United States'
+WHEN UPPER(TRIM(CNTRY)) IN ('DE', 'GERMANY') THEN 'Germany'
+WHEN UPPER(TRIM(CNTRY)) = 'AUSTRALIA' THEN 'Australia'
+WHEN UPPER(TRIM(CNTRY)) = 'UNITED KINGDOM' THEN 'United Kingdom'
+WHEN UPPER(TRIM(CNTRY)) = 'CANADA' THEN 'Canada'
+WHEN UPPER(TRIM(CNTRY)) = 'FRANCE' THEN 'France'
+WHEN TRIM(CNTRY) = '' OR CNTRY IS NULL THEN 'Unknown'
+ELSE CNTRY
+END AS CNTRY
+
+from bronze.erp_LOC_A101
+
