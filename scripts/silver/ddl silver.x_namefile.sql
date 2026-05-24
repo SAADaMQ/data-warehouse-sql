@@ -1,5 +1,17 @@
  use DataWareH
- 
+
+/*
+========================================================
+DDL Script: Create Silver Tables
+========================================================
+Script Purpose:
+    This script creates tables in the silver schema for both 
+    CRM and ERP source systems.
+    Run this script to define the DDL structure of 'silver' tables.
+========================================================
+*/
+
+	 
 --if OBJECT_ID('x','U') is not null
 	--drop table x
 
