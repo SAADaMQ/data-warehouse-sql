@@ -7,7 +7,7 @@ purpose:
     from the bronze schema. It performs the following:
     - Truncates the silver tables before inserting data
     - Inserts transformed and cleaned data from bronze tables
-    - Prints load duration for each table and the total batch
+    
 
 usage Example:
     EXEC silver.load_silver;
