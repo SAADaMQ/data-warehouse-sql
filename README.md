@@ -23,15 +23,13 @@ I used tools that are completely free, which is awesome:
 first the main goal was to take sales data from two different systems ERP and CRM. then I had to clean it and merge it into one clear model. I didn't do data historization because I think focusing on the latest data is enough for this scope.
 
 <img width="841" height="462" alt="image" src="https://github.com/user-attachments/assets/1b0ba2ad-c501-4a36-9978-ee63e71e79df" />
-
-
 ## Data Flow Diagram
 
 ```mermaid
 flowchart LR
     subgraph SRC [Sources]
-        CRM[📁 CRM]
-        ERP[📁 ERP]
+        CRM[CRM]
+        ERP[ERP]
     end
     
     subgraph BRZ [Bronze Layer]
@@ -75,21 +73,14 @@ flowchart LR
     S5 --> G2
     S6 --> G3
     
-    style B1 fill:#FAECE7,stroke:#D85A30
-    style B2 fill:#FAECE7,stroke:#D85A30
-    style B3 fill:#FAECE7,stroke:#D85A30
-    style B4 fill:#FAECE7,stroke:#D85A30
-    style B5 fill:#FAECE7,stroke:#D85A30
-    style B6 fill:#FAECE7,stroke:#D85A30
-    style S1 fill:#F1EFE8,stroke:#888780
-    style S2 fill:#F1EFE8,stroke:#888780
-    style S3 fill:#F1EFE8,stroke:#888780
-    style S4 fill:#F1EFE8,stroke:#888780
-    style S5 fill:#F1EFE8,stroke:#888780
-    style S6 fill:#F1EFE8,stroke:#888780
-    style G1 fill:#FAEEDA,stroke:#EF9F27
-    style G2 fill:#FAEEDA,stroke:#EF9F27
-    style G3 fill:#FAEEDA,stroke:#EF9F27
+    classDef bronze fill:#D85A30,stroke:#712B13,color:#fff,stroke-width:2px
+    classDef silver fill:#888780,stroke:#2C2C2A,color:#fff,stroke-width:2px
+    classDef gold fill:#EF9F27,stroke:#633806,color:#fff,stroke-width:2px
+    classDef src fill:#FAC775,stroke:#854F0B,color:#000,stroke-width:2px
+    
+    class B1,B2,B3,B4,B5,B6 bronze
+    class S1,S2,S3,S4,S5,S6 silver
+    class G1,G2,G3 gold
+    class CRM,ERP src
 ```
-
 
