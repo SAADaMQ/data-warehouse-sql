@@ -22,6 +22,7 @@ I used tools that are completely free, which is awesome:
 
 first the main goal was to take sales data from two different systems ERP and CRM. then I had to clean it and merge it into one clear model. I didn't do data historization because I think focusing on the latest data is enough for this scope.
 
+<img width="841" height="462" alt="image" src="https://github.com/user-attachments/assets/1b0ba2ad-c501-4a36-9978-ee63e71e79df" />
 
 
 ## Data Flow Diagram
