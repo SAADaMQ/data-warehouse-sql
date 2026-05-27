@@ -22,46 +22,26 @@ I used tools that are completely free, which is awesome:
 
 first the main goal was to take sales data from two different systems ERP and CRM. then I had to clean it and merge it into one clear model. I didn't do data historization because I think focusing on the latest data is enough for this scope.
 
-## Data Flow Diagram
+## Data Architecture
+
+The data architecture for this project follows the **Medallion Architecture** with three layers — Bronze, Silver, and Gold built on SQL Server.
+
+- **Bronze Layer:** Stores raw data as-is from the source systems (CRM and ERP). Data is ingested from CSV files into SQL Server tables with no transformations.
+- **Silver Layer:** Applies data cleansing, standardization, normalization, and enrichment to prepare data for analysis.
+- **Gold Layer:** Houses business-ready data modeled as a Star Schema with fact and dimension views, optimized for reporting and analytics.
+
+<img width="2752" height="1536" alt="High Level Architecture" src="https://github.com/user-attachments/assets/244deb94-2725-40f0-a2d5-29734001a6b8" />
+
+
+## Data Flow
+
+The diagram below illustrates how data flows across the three layers — from raw CSV files in the source systems all the way to the final star schema views in the Gold layer.
+
+- **6 source tables** ingested from CRM and ERP systems
+- **1-to-1 mapping** between Bronze and Silver tables with transformations applied
+- **Integration** happens at the Gold layer where multiple Silver tables are combined into business entities
 
 <img width="841" height="462" alt="image" src="https://github.com/user-attachments/assets/1b0ba2ad-c501-4a36-9978-ee63e71e79df" />
 
-```mermaid
-flowchart LR
-    subgraph SRC [Sources]
-        CRM[CRM]
-        ERP[ERP]
-    end
-    
-    subgraph DWH [Data Warehouse - SQL Server]
-        BRZ[Bronze Layer<br/>Raw Data]
-        SLV[Silver Layer<br/>Cleaned Data]
-        GLD[Gold Layer<br/>Business-Ready]
-    end
-    
-    subgraph CON [Consume]
-        BI[BI & Reporting]
-        SQL[Ad-hoc SQL]
-        ML[Machine Learning]
-    end
-    
-    CRM --> BRZ
-    ERP --> BRZ
-    BRZ --> SLV
-    SLV --> GLD
-    GLD --> BI
-    GLD --> SQL
-    GLD --> ML
-    
-    classDef bronze fill:#D85A30,stroke:#712B13,color:#fff,stroke-width:2px
-    classDef silver fill:#888780,stroke:#2C2C2A,color:#fff,stroke-width:2px
-    classDef gold fill:#EF9F27,stroke:#633806,color:#fff,stroke-width:2px
-    classDef src fill:#FAC775,stroke:#854F0B,color:#000,stroke-width:2px
-    classDef consume fill:#7F77DD,stroke:#26215C,color:#fff,stroke-width:2px
-    
-    class BRZ bronze
-    class SLV silver
-    class GLD gold
-    class CRM,ERP src
-    class BI,SQL,ML consume
-```
+
+
