@@ -24,7 +24,7 @@ first the main goal was to take sales data from two different systems ERP and CR
 
 ## Data Architecture
 
-The data architecture for this project follows the **Medallion Architecture** with three layers — Bronze, Silver, and Gold built on SQL Server.
+The data architecture for this project follows the **Medallion Architecture** with three layers Bronze, Silver, and Gold built on SQL Server.
 
 - **Bronze Layer:** Stores raw data as-is from the source systems (CRM and ERP). Data is ingested from CSV files into SQL Server tables with no transformations.
 - **Silver Layer:** Applies data cleansing, standardization, normalization, and enrichment to prepare data for analysis.
@@ -35,7 +35,7 @@ The data architecture for this project follows the **Medallion Architecture** wi
 
 ## Data Flow
 
-The diagram below illustrates how data flows across the three layers — from raw CSV files in the source systems all the way to the final star schema views in the Gold layer.
+The diagram below illustrates how data flows across the three layers from raw CSV files in the source systems all the way to the final star schema views in the Gold layer.
 
 - **6 source tables** ingested from CRM and ERP systems
 - **1-to-1 mapping** between Bronze and Silver tables with transformations applied
