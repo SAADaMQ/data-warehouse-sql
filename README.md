@@ -44,4 +44,26 @@ The diagram below illustrates how data flows across the three layers from raw CS
 <img width="841" height="462" alt="image" src="https://github.com/user-attachments/assets/1b0ba2ad-c501-4a36-9978-ee63e71e79df" />
 
 
+##  Data Model Star Schema
+
+The Gold layer is modeled as a Star Schema to optimize analytical queries and reporting performance. The schema consists of one central fact table surrounded by dimension tables, enabling efficient aggregations and slicing across business dimensions.
+
+### Schema Components
+
+- gold.fact_sales is the central fact table containing sales transactions with measures such as sales amount, quantity, and price, along with foreign keys to dimensions.
+
+- gold.dim_customers is the customer dimension integrating data from CRM and ERP sources including name, gender, country, age, and marital status.
+
+- gold.dim_products is the product dimension combining product details with category information such as name, category, subcategory, cost, and line.
+
+### Relationships
+
+- One customer can have many sales records.
+
+- One product can appear in many sales records.
+
+- Surrogate keys customer_key and product_key are used for joins instead of business keys for better performance.
+
+
+<img width="2814" height="1536" alt="Data Model" src="https://github.com/user-attachments/assets/67032331-8813-4c27-9906-95e0e52e5788" />
 
